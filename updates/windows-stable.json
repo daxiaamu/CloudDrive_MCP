@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "product": "CloudDriveMCP",
+  "platform": "windows-x64",
+  "channel": "stable",
+  "versionCode": 2009,
+  "versionName": "0.2.9",
+  "maxForcedVersionCode": 0,
+  "policyRevision": 2009001,
+  "size": 1213766935,
+  "sha256": "414b4809d9bb4f7a537fe3d06d7d381c4deb8870a163b9c58e842e567b72efde",
+  "urls": [
+    "https://gh-proxy.com/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
+    "https://gh-proxy.org/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
+    "https://gh.3w.pm/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
+    "https://ghproxy.net/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
+    "https://ghfast.top/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
+    "https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip"
+  ],
+  "publishedAt": "2026-11-10T02:14:55Z",
+  "changelog": "OTA 升级验证版本：从 v0.2.8 检查更新并下载，传输结束后正常退出网盘客户端，再点击安装。程序会保留原版目录以便回滚。"
+}
