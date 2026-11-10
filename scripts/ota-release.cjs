@@ -5,8 +5,8 @@ const fs=require('node:fs'),fsp=require('node:fs/promises'),crypto=require('node
 const {versionCode,normalizeManifest}=require('../src/ota-metadata.cjs');
 const hosts=['ghfast.top','gh-proxy.com','ghproxy.net','gh.llkk.cc','ghp.keleyaa.com','gh-proxy.org','gh.3w.pm','gh.jasonzeng.dev','ghproxy.vip'];
 async function hashFile(file){const h=crypto.createHash('sha256');for await(const c of fs.createReadStream(file))h.update(c);return h.digest('hex');}
-async function verify(url,size,sha){
- const r=await fetch(url,{signal:AbortSignal.timeout(20*60*1000),headers:{'User-Agent':'CloudDriveMCP-release'}});
+async function verify(url,size,sha,signal){
+ const r=await fetch(url,{signal:signal?AbortSignal.any([signal,AbortSignal.timeout(20*60*1000)]):AbortSignal.timeout(20*60*1000),headers:{'User-Agent':'CloudDriveMCP-release'}});
  if(!r.ok||new URL(r.url).protocol!=='https:'||!r.body)throw Error('HTTP or redirect failure');
  const h=crypto.createHash('sha256');let bytes=0;
  for await(const chunk of r.body){bytes+=chunk.length;if(bytes>size)throw Error('size exceeded');h.update(chunk);}
@@ -23,8 +23,16 @@ async function main(){
  if(size!==asset.size)throw Error('release asset size mismatch');
  if(!Number.isSafeInteger(policy.policyRevision)||policy.policyRevision<0||policy.policyRevision>=1000||!Number.isSafeInteger(policy.maxForcedVersionCode)||!policy.reason)throw Error('invalid policy');
  const candidates=hosts.map(host=>`https://${host}/${asset.browser_download_url}`);
- const results=await Promise.all(candidates.map(async url=>{try{await verify(url,size,sha);console.log(`verified ${new URL(url).host}`);return url}catch(e){console.error(`failed ${new URL(url).host}: ${e.message}`);return null;}}));
- const urls=results.filter(Boolean);if(urls.length<5)throw Error(`only ${urls.length} validated mirrors; retaining previous metadata`);
+ const controller=new AbortController();
+ const urls=await new Promise((resolve,reject)=>{
+  const verified=[];let remaining=candidates.length,finished=false;
+  for(const url of candidates)verify(url,size,sha,controller.signal).then(()=>{
+   if(finished)return;verified.push(url);console.log(`verified ${new URL(url).host}`);
+   if(verified.length>=5){finished=true;controller.abort();resolve(verified);}
+  },e=>{if(!finished)console.error(`failed ${new URL(url).host}: ${e.message}`);}).finally(()=>{
+   if(--remaining===0&&!finished){finished=true;reject(Error(`only ${verified.length} validated mirrors; retaining previous metadata`));}
+  });
+ });
  urls.push(asset.browser_download_url);
  const manifest=normalizeManifest({schemaVersion:1,product:'CloudDriveMCP',platform:'windows-x64',channel:release.prerelease?'beta':'stable',versionCode:code,versionName:version,maxForcedVersionCode:policy.maxForcedVersionCode,policyRevision:code*1000+policy.policyRevision,size,sha256:sha,urls,publishedAt:release.published_at,changelog:release.body||''},release.prerelease?'beta':'stable');
  await fsp.writeFile(process.env.OTA_OUTPUT,JSON.stringify(manifest,null,2)+'\n');
