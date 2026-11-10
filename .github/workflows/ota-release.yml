@@ -1,0 +1,52 @@
+name: Publish Windows OTA metadata
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag
+        required: true
+permissions:
+  contents: write
+concurrency:
+  group: windows-ota-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch release and its asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${RELEASE_TAG}" > "$RUNNER_TEMP/release.json"
+          mkdir -p "$RUNNER_TEMP/ota-asset"
+          gh release download "$RELEASE_TAG" --pattern "CloudDriveMCP-*-Windows-x64-Portable.zip" --dir "$RUNNER_TEMP/ota-asset"
+          python3 scripts/ota-release-identity.py "$RUNNER_TEMP/release.json" "$RUNNER_TEMP/ota-asset"
+      - name: Verify mirrors and prepare metadata
+        env:
+          OTA_RELEASE_JSON: ${{ runner.temp }}/release.json
+          OTA_ASSET_DIR: ${{ runner.temp }}/ota-asset
+          OTA_OUTPUT: ${{ runner.temp }}/windows-update.json
+        run: node scripts/ota-release.cjs
+      - name: Publish verified metadata
+        env:
+          RELEASE_JSON: ${{ runner.temp }}/release.json
+          GENERATED: ${{ runner.temp }}/windows-update.json
+        run: |
+          channel=$(node -e "console.log(require(process.env.RELEASE_JSON).prerelease?'beta':'stable')")
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin main
+          node scripts/ota-publish-metadata.cjs "$GENERATED" "updates/windows-$channel.json"
+          git add "updates/windows-$channel.json"
+          if ! git diff --cached --quiet; then git commit -m "Publish Windows $channel update metadata"; git push origin HEAD:main; fi
