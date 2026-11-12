@@ -3,20 +3,20 @@
   "product": "CloudDriveMCP",
   "platform": "windows-x64",
   "channel": "stable",
-  "versionCode": 2009,
-  "versionName": "0.2.9",
+  "versionCode": 2010,
+  "versionName": "0.2.10",
   "maxForcedVersionCode": 0,
-  "policyRevision": 2009001,
-  "size": 1213766935,
-  "sha256": "414b4809d9bb4f7a537fe3d06d7d381c4deb8870a163b9c58e842e567b72efde",
+  "policyRevision": 2010001,
+  "size": 1237132064,
+  "sha256": "ba0505ff651f61d091a0921bbfcfd5a7d7e14558512787cc14b39a48a3c98dd7",
   "urls": [
-    "https://gh-proxy.com/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
-    "https://gh-proxy.org/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
-    "https://gh.3w.pm/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
-    "https://ghproxy.net/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
-    "https://ghfast.top/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip",
-    "https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.9/CloudDriveMCP-0.2.9-Windows-x64-Portable.zip"
+    "https://ghproxy.net/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
+    "https://gh.3w.pm/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
+    "https://gh-proxy.com/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
+    "https://ghproxy.vip/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
+    "https://ghfast.top/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
+    "https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip"
   ],
-  "publishedAt": "2026-11-10T02:14:55Z",
-  "changelog": "OTA 升级验证版本：从 v0.2.8 检查更新并下载，传输结束后正常退出网盘客户端，再点击安装。程序会保留原版目录以便回滚。"
+  "publishedAt": "2026-11-12T19:47:06Z",
+  "changelog": "更新三个内置网盘客户端，并优化百度网盘文件重命名速度。\n\n- 百度网盘更新至 7.45.2.1 Lite R8，加入小文件独立调度。R8 已通过原生队列测试，完整云端传输尚待验证。\n- 夸克网盘和迅雷云盘更新精简功能，小于 10 KiB 的已知大小文件可不占普通上传、下载任务名额；恰好 10 KiB 及以上仍遵循原任务数设置。迅雷普通下载大小未知时仍遵循普通限制。\n- 百度重命名减少重复目录读取，并核对操作前后的文件身份和状态。\n\n请先等待所有传输结束，再在程序中下载并安装更新。更新包不包含网盘账号数据。\n\n已有的百度额外账号会保留其原客户端副本，更新三合一不会自动将这些副本替换为 R8；新建账号使用 R8。现有账号仍需单独迁移才能使用 R8，请勿直接删除账号目录。\n"
 }
