@@ -3,20 +3,20 @@
   "product": "CloudDriveMCP",
   "platform": "windows-x64",
   "channel": "stable",
-  "versionCode": 2010,
-  "versionName": "0.2.10",
+  "versionCode": 2012,
+  "versionName": "0.2.12",
   "maxForcedVersionCode": 0,
-  "policyRevision": 2010001,
-  "size": 1237132064,
-  "sha256": "ba0505ff651f61d091a0921bbfcfd5a7d7e14558512787cc14b39a48a3c98dd7",
+  "policyRevision": 2012001,
+  "size": 1214308228,
+  "sha256": "3e28284ebecddb6db5079d5c0f6dfa1f5c7cc170d0620ed5eb30cf264a91d819",
   "urls": [
-    "https://ghproxy.net/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
-    "https://gh.3w.pm/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
-    "https://gh-proxy.com/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
-    "https://ghproxy.vip/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
-    "https://ghfast.top/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip",
-    "https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.10/CloudDriveMCP-0.2.10-Windows-x64-Portable.zip"
+    "https://ghproxy.net/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.12/CloudDriveMCP-0.2.12-Windows-x64-Portable.zip",
+    "https://gh-proxy.org/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.12/CloudDriveMCP-0.2.12-Windows-x64-Portable.zip",
+    "https://gh-proxy.com/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.12/CloudDriveMCP-0.2.12-Windows-x64-Portable.zip",
+    "https://gh.3w.pm/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.12/CloudDriveMCP-0.2.12-Windows-x64-Portable.zip",
+    "https://ghproxy.vip/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.12/CloudDriveMCP-0.2.12-Windows-x64-Portable.zip",
+    "https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.12/CloudDriveMCP-0.2.12-Windows-x64-Portable.zip"
   ],
-  "publishedAt": "2026-11-12T19:47:06Z",
-  "changelog": "更新三个内置网盘客户端，并优化百度网盘文件重命名速度。\n\n- 百度网盘更新至 7.45.2.1 Lite R8，加入小文件独立调度。R8 已通过原生队列测试，完整云端传输尚待验证。\n- 夸克网盘和迅雷云盘更新精简功能，小于 10 KiB 的已知大小文件可不占普通上传、下载任务名额；恰好 10 KiB 及以上仍遵循原任务数设置。迅雷普通下载大小未知时仍遵循普通限制。\n- 百度重命名减少重复目录读取，并核对操作前后的文件身份和状态。\n\n请先等待所有传输结束，再在程序中下载并安装更新。更新包不包含网盘账号数据。\n\n已有的百度额外账号会保留其原客户端副本，更新三合一不会自动将这些副本替换为 R8；新建账号使用 R8。现有账号仍需单独迁移才能使用 R8，请勿直接删除账号目录。\n"
+  "publishedAt": "2026-11-14T18:55:29Z",
+  "changelog": "# CloudDriveMCP 0.2.12\n\n- 百度更新至 Lite R11，修复启动时出现“应用程序被修改”的问题，移除快捷键冲突弹窗。\n- 三家网盘的小文件调度边界调整为严格小于 100 KiB；恰好 100 KiB 及以上的文件仍受普通任务数量限制。\n- 迅雷更新至 Slim R4，移除创建任务和退出时的开机自启提示，包含既有任务控制修复。\n- 百度 R11 已通过隔离冷启动及原生队列离线检查，真实云端传输和 NAS 环境尚未验收。夸克 0.3.5 合入候选已通过静态检查，同一调度逻辑已在 0.3.4 客户端实测。\n\n更新前请等待传输结束，正常退出三合一和网盘客户端。已有百度额外账号保留各自的客户端副本，本次更新不会自动替换这些副本；请保留账号数据。若旧版无法自动更新，可在旧程序目录运行 Unlock-Clients.cmd 后离线覆盖完整包，不要删除原目录。\n"
 }
