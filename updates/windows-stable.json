@@ -3,20 +3,20 @@
   "product": "CloudDriveMCP",
   "platform": "windows-x64",
   "channel": "stable",
-  "versionCode": 2014,
-  "versionName": "0.2.14",
+  "versionCode": 2015,
+  "versionName": "0.2.15",
   "maxForcedVersionCode": 0,
-  "policyRevision": 2014001,
-  "size": 1214322395,
-  "sha256": "0443748c3513ea003dd9eab506b5bb3fc7216bcb435f3751563f785ff47a1b7d",
+  "policyRevision": 2015001,
+  "size": 1214422471,
+  "sha256": "4772075be465b079b5b018930484f5c976598921e2997a6861cee4213a9ccc47",
   "urls": [
-    "https://ghproxy.net/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.14/CloudDriveMCP-0.2.14-Windows-x64-Portable.zip",
-    "https://gh.3w.pm/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.14/CloudDriveMCP-0.2.14-Windows-x64-Portable.zip",
-    "https://gh-proxy.org/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.14/CloudDriveMCP-0.2.14-Windows-x64-Portable.zip",
-    "https://gh-proxy.com/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.14/CloudDriveMCP-0.2.14-Windows-x64-Portable.zip",
-    "https://ghproxy.vip/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.14/CloudDriveMCP-0.2.14-Windows-x64-Portable.zip",
-    "https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.14/CloudDriveMCP-0.2.14-Windows-x64-Portable.zip"
+    "https://gh.3w.pm/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.15/CloudDriveMCP-0.2.15-Windows-x64-Portable.zip",
+    "https://gh-proxy.org/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.15/CloudDriveMCP-0.2.15-Windows-x64-Portable.zip",
+    "https://gh-proxy.com/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.15/CloudDriveMCP-0.2.15-Windows-x64-Portable.zip",
+    "https://ghproxy.net/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.15/CloudDriveMCP-0.2.15-Windows-x64-Portable.zip",
+    "https://ghfast.top/https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.15/CloudDriveMCP-0.2.15-Windows-x64-Portable.zip",
+    "https://github.com/daxiaamu/CloudDrive_MCP/releases/download/v0.2.15/CloudDriveMCP-0.2.15-Windows-x64-Portable.zip"
   ],
-  "publishedAt": "2026-11-15T20:51:00Z",
-  "changelog": "# CloudDriveMCP 0.2.14\n\n- 修复更新准备期间后台重连可能重新启动迅雷的问题。点击安装后暂停客户端自动启动；如果客户端仍在运行，等待传输结束并从托盘退出后重试。\n- 选择“以后再说”会恢复自动连接；原有入口开关保持不变。更新不会强行关闭客户端或中断传输。\n- 关闭入口时，正在进行的迅雷连接会在启动前再次检查停止状态，避免退出后被延迟拉起。\n\n该修复在安装 0.2.14 后生效。从旧版升级至本版仍需要先正常退出相关客户端；若旧版反复拉起迅雷，可先从托盘退出三合一及迅雷，再重启三合一并安装，或使用完整包离线更新。更新前请保留账号资料和百度额外账号目录。\n"
+  "publishedAt": "2026-11-21T11:40:14Z",
+  "changelog": "# CloudDriveMCP 0.2.15\n\n- 百度内置客户端更新至 7.45.2.1 Lite R12：上传任务悬停显示本地文件和网盘目标完整路径。\n- 夸克 7.4.2.822 增加上传任务路径提示和活动广告屏蔽，保留小文件调度。\n- 迅雷 12.4.12.4002 更新至 Slim R15，并加入上传任务路径提示；路径查询失败时会明确提示。\n- 软件更新下载优先使用 MUDL-C 多连接下载，可选择下次启动时自动安装；更新下载和辅助文件放在程序目录旁。\n\n百度 R12 未完成真实云端传输与 NAS 环境验收；夸克上传路径提示尚未在正式客户端实测；迅雷 R15 与路径提示的组合尚未进行真实云端上传验收。请等待传输结束并退出网盘客户端后安装。已有百度额外账号会保留各自客户端副本，不会自动替换。\n\n完整包 SHA-256：`4772075be465b079b5b018930484f5c976598921e2997a6861cee4213a9ccc47`\n"
 }
